@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+   
+</head>
+<body>
+    <style>
+        table, tr, td, th{
+            border: 1px solid black;
+        }
+        tr, td, th{
+            padding: 10px;
+            text-align: center;
+        }
+        ul{
+            margin-bottom: 15px;
+        }
+        input{
+            margin-bottom: 15px;
+            padding: 10px;
+        }
+        img{
+            min-height: 100px;
+            max-width:100px ;
+        }
+        .icon{
+            max-width: 100px;
+            max-height: 100px;
+        }
+    </style>
+    <ul>
+        <li>
+            <a href="/admin/cliente/">Listar</a>
+        </li>
+        <li>
+            <a href="/admin/cliente/add">Adicionar</a>
+        </li>
+    </ul>
+    <form  method="post">
+        <input type="text" name="pesquisar">
+        <input type="submit" value="Pesquisar">
+    </form>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>nome</th>
+            <th>sobrenome</th>
+            <th>genero</th>
+            <th>endereco</th>
+            <th>cidade</th>
+            <th>estado</th>
+            <th>email</th>
+            <th>senha</th>
+            <th>foto</th>
+            <th>edita</th>
+            <th>deleta</th>
+        </tr>
+        <% Clientes.forEach(function(cliente){ %>
+        <tr>
+            <td><%=cliente.id%></td>
+            <td><%=cliente.nome%></td>
+            <td><%=cliente.sobrenome%></td>
+            <td><%=cliente.genero%></td>
+            <td><%=cliente.endereco%></td>
+            <td><%=cliente.cidade%></td>
+            <td><%=cliente.estado%></td>
+            <td><%=cliente.email%></td>
+            <td><%=cliente.senha%></td>
+            <td>
+               <img src="/uploads/<%=cliente.foto%>">
+            </td>
+            <td>
+                <a href="/admin/cliente/edt/<%=cliente.id%>">
+                    <img src="/edite.jpg" class="icon">
+                </a> 
+            </td>
+            <td>
+               <a href="/admin/cliente/del/<%=cliente.id%>">
+                   <img src="/lixeira.jpg" class="icon">
+               </a> 
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+    <h2><%=msg%></h2>
+   
+</body>
+</html>
